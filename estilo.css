@@ -359,20 +359,57 @@ body {
 }
 
 /* Hamburger Animation States */
+#mobile-menu-btn .line-1,
+#mobile-menu-btn .line-2,
+#mobile-menu-btn .line-3 {
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
 #mobile-menu-btn.active .line-1 {
     transform: translateY(6px) rotate(45deg);
+    width: 24px;
 }
 
 #mobile-menu-btn.active .line-2 {
     opacity: 0;
-    transform: translateX(10px);
+    transform: translateX(20px);
 }
 
 #mobile-menu-btn.active .line-3 {
     transform: translateY(-6px) rotate(-45deg);
+    width: 24px;
+}
+
+/* Elegant Mobile Menu Overlay */
+#mobile-menu {
+    visibility: hidden;
+    clip-path: circle(0% at top right);
+    transition: clip-path 0.8s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.8s;
+    opacity: 1 !important; /* Managed by clip-path and visibility */
 }
 
 #mobile-menu.active {
-    opacity: 1 !important;
+    visibility: visible;
+    clip-path: circle(150% at top right);
     pointer-events: auto !important;
+}
+
+.mobile-link {
+    position: relative;
+    overflow: hidden;
+}
+
+.mobile-link::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #ef233c;
+    transition: width 0.3s ease;
+}
+
+.mobile-link:hover::after {
+    width: 100%;
 }

@@ -308,40 +308,62 @@ document.addEventListener('DOMContentLoaded', () => {
     const mobileLinks = document.querySelectorAll('.mobile-link');
 
     if (mobileMenuBtn && mobileMenu) {
-        mobileMenuBtn.addEventListener('click', () => {
+        const toggleMenu = () => {
             const isOpen = mobileMenuBtn.classList.toggle('active');
             mobileMenu.classList.toggle('active');
             
             if (isOpen) {
                 document.body.style.overflow = 'hidden';
+                // Premium stagger entrance with blur
                 gsap.fromTo('.mobile-link', 
-                    { y: 30, opacity: 0 }, 
-                    { y: 0, opacity: 1, duration: 0.5, stagger: 0.1, ease: "power3.out", delay: 0.2 }
+                    { y: 50, opacity: 0, filter: 'blur(10px)', scale: 0.8 }, 
+                    { 
+                        y: 0, 
+                        opacity: 1, 
+                        filter: 'blur(0px)', 
+                        scale: 1,
+                        duration: 0.8, 
+                        stagger: 0.1, 
+                        ease: "power4.out", 
+                        delay: 0.3 
+                    }
                 );
             } else {
                 document.body.style.overflow = '';
+                // Smoothly fade out links when closing
+                gsap.to('.mobile-link', {
+                    opacity: 0,
+                    y: -20,
+                    duration: 0.3,
+                    ease: "power2.in"
+                });
             }
-        });
+        };
+
+        mobileMenuBtn.addEventListener('click', toggleMenu);
 
         mobileLinks.forEach(link => {
             link.addEventListener('click', (e) => {
-                e.preventDefault();
                 const target = link.getAttribute('href');
                 
-                // Close menu
-                mobileMenuBtn.classList.remove('active');
-                mobileMenu.classList.remove('active');
-                document.body.style.overflow = '';
+                if (target.startsWith('#')) {
+                    e.preventDefault();
+                    
+                    // Close menu smoothly
+                    mobileMenuBtn.classList.remove('active');
+                    mobileMenu.classList.remove('active');
+                    document.body.style.overflow = '';
 
-                // Scroll to section
-                gsap.to(window, {
-                    duration: 1.5,
-                    scrollTo: {
-                        y: target,
-                        offsetY: 80
-                    },
-                    ease: "power4.inOut"
-                });
+                    // Scroll to section
+                    gsap.to(window, {
+                        duration: 1.5,
+                        scrollTo: {
+                            y: target,
+                            offsetY: 80
+                        },
+                        ease: "power4.inOut"
+                    });
+                }
             });
         });
     }
