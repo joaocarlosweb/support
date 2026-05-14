@@ -384,9 +384,8 @@ body {
 #mobile-menu {
     visibility: hidden;
     clip-path: circle(0% at top right);
-    transition: clip-path 0.8s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.8s;
+    transition: clip-path 1s cubic-bezier(0.16, 1, 0.3, 1), visibility 1s;
     opacity: 1 !important;
-    /* Managed by clip-path and visibility */
 }
 
 #mobile-menu.active {
@@ -396,8 +395,34 @@ body {
 }
 
 .mobile-link {
-    position: relative;
-    overflow: hidden;
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    letter-spacing: -0.05em;
+}
+
+.mobile-link span {
+    display: inline-block;
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), color 0.5s;
+}
+
+.mobile-link:hover span {
+    transform: translateY(-5px) scale(1.1);
+    color: white;
+}
+
+.mobile-link::after {
+    content: attr(data-number);
+    position: absolute;
+    top: -10px;
+    left: -20px;
+    font-size: 10px;
+    font-family: monospace;
+    color: #ef233c;
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+.mobile-link:hover::after {
+    opacity: 1;
 }
 
 .mobile-link::after {

@@ -122,20 +122,39 @@
 
     <!-- Mobile Menu Overlay -->
     <div id="mobile-menu"
-        class="fixed inset-0 bg-black/98 z-[55] flex flex-col items-center justify-center opacity-0 pointer-events-none transition-all duration-500 backdrop-blur-2xl">
-        <div class="absolute top-0 left-0 w-full h-full bg-[grid-white/[0.02]] bg-[size:60px_60px]"></div>
-        <nav
-            class="relative z-10 flex flex-col items-center gap-10 text-4xl font-manrope font-bold uppercase tracking-tighter">
-            <a href="#inicio"
-                class="mobile-link text-white/40 hover:text-white transition-all duration-300 scale-90 hover:scale-100">Início</a>
-            <a href="#quem-somos"
-                class="mobile-link text-white/40 hover:text-white transition-all duration-300 scale-90 hover:scale-100">Quem
-                Somos</a>
-            <a href="#servicos"
-                class="mobile-link text-white/40 hover:text-white transition-all duration-300 scale-90 hover:scale-100">Soluções</a>
-            <a href="#contato"
-                class="mobile-link text-white/40 hover:text-white transition-all duration-300 scale-90 hover:scale-100">Contato</a>
+        class="fixed inset-0 bg-black/95 z-[55] flex flex-col items-center justify-center opacity-0 pointer-events-none transition-all duration-700 backdrop-blur-3xl overflow-hidden">
+        
+        <!-- Decorative Lights -->
+        <div class="absolute top-[-10%] left-[-10%] w-[60%] h-[60%] bg-[#ef233c]/10 blur-[120px] rounded-full animate-pulse"></div>
+        <div class="absolute bottom-[-10%] right-[-10%] w-[60%] h-[60%] bg-[#ef233c]/05 blur-[120px] rounded-full"></div>
+        
+        <div class="absolute inset-0 bg-[grid-white/[0.015]] bg-[size:60px_60px]"></div>
+        
+        <nav class="relative z-10 flex flex-col items-center gap-12 text-5xl font-manrope font-bold uppercase tracking-tighter">
+            <a href="#inicio" class="mobile-link group relative py-2 px-4" data-number="01">
+                <span class="relative z-10 text-white/50 group-hover:text-white transition-colors duration-500">Início</span>
+                <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[2px] bg-[#ef233c] group-hover:w-full transition-all duration-500 shadow-[0_0_15px_#ef233c]"></div>
+            </a>
+            <a href="#quem-somos" class="mobile-link group relative py-2 px-4" data-number="02">
+                <span class="relative z-10 text-white/50 group-hover:text-white transition-colors duration-500">Sobre</span>
+                <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[2px] bg-[#ef233c] group-hover:w-full transition-all duration-500 shadow-[0_0_15px_#ef233c]"></div>
+            </a>
+            <a href="#servicos" class="mobile-link group relative py-2 px-4" data-number="03">
+                <span class="relative z-10 text-white/50 group-hover:text-white transition-colors duration-500">Soluções</span>
+                <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[2px] bg-[#ef233c] group-hover:w-full transition-all duration-500 shadow-[0_0_15px_#ef233c]"></div>
+            </a>
+            <a href="#contato" class="mobile-link group relative py-2 px-4" data-number="04">
+                <span class="relative z-10 text-white/50 group-hover:text-white transition-colors duration-500">Contato</span>
+                <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[2px] bg-[#ef233c] group-hover:w-full transition-all duration-500 shadow-[0_0_15px_#ef233c]"></div>
+            </a>
         </nav>
+
+        <!-- Footer Info in Mobile Menu -->
+        <div class="absolute bottom-16 left-0 w-full px-10 flex flex-col items-center gap-6 opacity-40">
+             <img src="logosuporthead.png" alt="Support" class="h-6 w-auto grayscale">
+             <div class="h-px w-12 bg-white/20"></div>
+             <p class="text-[9px] font-mono tracking-[0.3em] text-white/60">CAICÓ • RIO GRANDE DO NORTE</p>
+        </div>
     </div>
 
     <section id="inicio"
