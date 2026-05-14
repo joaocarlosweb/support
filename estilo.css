@@ -347,7 +347,7 @@ body {
         padding-left: 1rem !important;
         padding-right: 1rem !important;
     }
-    
+
     .team-card {
         min-width: 240px !important;
     }
@@ -385,7 +385,8 @@ body {
     visibility: hidden;
     clip-path: circle(0% at top right);
     transition: clip-path 0.8s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.8s;
-    opacity: 1 !important; /* Managed by clip-path and visibility */
+    opacity: 1 !important;
+    /* Managed by clip-path and visibility */
 }
 
 #mobile-menu.active {
@@ -447,7 +448,7 @@ body {
     align-items: center;
     justify-content: center;
     gap: 3rem;
-    padding-top: 5rem;
+
     padding-bottom: 3rem;
 }
 
@@ -478,7 +479,7 @@ body {
         font-size: 30vw;
         bottom: 5%;
     }
-    
+
     .footer-legal-text {
         letter-spacing: 0.3em;
         line-height: 2;
@@ -506,11 +507,9 @@ body {
     content: '';
     position: absolute;
     inset: 0;
-    background: radial-gradient(
-        400px circle at var(--mouse-x) var(--mouse-y),
-        rgba(239, 35, 60, 0.1),
-        transparent 40%
-    );
+    background: radial-gradient(400px circle at var(--mouse-x) var(--mouse-y),
+            rgba(239, 35, 60, 0.1),
+            transparent 40%);
     opacity: 0;
     transition: opacity 0.5s;
     pointer-events: none;
@@ -579,19 +578,21 @@ body {
     left: -50%;
     width: 200%;
     height: 200%;
-    background: linear-gradient(
-        45deg,
-        transparent 45%,
-        rgba(255, 255, 255, 0.1) 50%,
-        transparent 55%
-    );
+    background: linear-gradient(45deg,
+            transparent 45%,
+            rgba(255, 255, 255, 0.1) 50%,
+            transparent 55%);
     transform: rotate(45deg);
     animation: btn-shimmer-effect 4s infinite;
     pointer-events: none;
 }
 
 @keyframes btn-shimmer-effect {
-    0% { transform: translateX(-100%) rotate(45deg); }
-    100% { transform: translateX(100%) rotate(45deg); }
-}
+    0% {
+        transform: translateX(-100%) rotate(45deg);
+    }
 
+    100% {
+        transform: translateX(100%) rotate(45deg);
+    }
+}
