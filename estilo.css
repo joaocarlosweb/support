@@ -494,3 +494,104 @@ body {
     }
 }
 
+/* --- Specialities Interaction --- */
+.speciality-item {
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    background: rgba(255, 255, 255, 0.01);
+    position: relative;
+    overflow: hidden;
+}
+
+.speciality-item::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+        400px circle at var(--mouse-x) var(--mouse-y),
+        rgba(239, 35, 60, 0.1),
+        transparent 40%
+    );
+    opacity: 0;
+    transition: opacity 0.5s;
+    pointer-events: none;
+}
+
+.speciality-item:hover::before {
+    opacity: 1;
+}
+
+.speciality-item.active {
+    background: rgba(239, 35, 60, 0.1);
+    border-color: rgba(239, 35, 60, 0.8);
+    box-shadow: 0 0 30px rgba(239, 35, 60, 0.15);
+    transform: translateX(10px);
+}
+
+.speciality-item.active h3 {
+    color: #ffffff;
+    letter-spacing: 0.05em;
+}
+
+.speciality-item.active .item-number {
+    color: #ef233c;
+    font-weight: 800;
+}
+
+.speciality-item.active .item-icon-box {
+    border-color: #ef233c;
+    background: #ef233c;
+    box-shadow: 0 0 20px rgba(239, 35, 60, 0.5);
+}
+
+/* Premium Detail Card */
+#speciality-display {
+    background: linear-gradient(145deg, rgba(20, 20, 20, 0.95) 0%, rgba(10, 10, 10, 0.98) 100%);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 40px 100px -20px rgba(0, 0, 0, 0.8);
+}
+
+.speciality-glow {
+    background: radial-gradient(circle at center, #ef233c 0%, transparent 70%);
+    mix-blend-mode: screen;
+}
+
+/* Feature List Animation */
+#display-features li {
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+#display-features li:hover {
+    transform: translateX(5px);
+    color: white;
+}
+
+/* Shimmer Button Effect */
+.btn-shimmer {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-shimmer::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        45deg,
+        transparent 45%,
+        rgba(255, 255, 255, 0.1) 50%,
+        transparent 55%
+    );
+    transform: rotate(45deg);
+    animation: btn-shimmer-effect 4s infinite;
+    pointer-events: none;
+}
+
+@keyframes btn-shimmer-effect {
+    0% { transform: translateX(-100%) rotate(45deg); }
+    100% { transform: translateX(100%) rotate(45deg); }
+}
+

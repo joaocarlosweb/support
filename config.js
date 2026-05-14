@@ -68,81 +68,124 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Animate Text (Typewriter/Reveal) Logic
-    const serviceData = [
-        {
-            tag: "[ TI Gerenciado ]",
-            title: "Suporte de TI Gerenciado",
-            desc: "Somos responsáveis por gerenciar, monitorar e manter a infraestrutura e os sistemas de TI do cliente, garantindo que tudo funcione de maneira eficiente e segura."
+    // Specialities Interaction Logic
+    const specialitiesData = {
+        'ti-gerenciado': {
+            title: 'TI Gerenciado',
+            subtitle: 'Gestão Integral de Infraestrutura',
+            features: [
+                'Monitoramento 24/7 de todos os ativos de rede',
+                'Suporte preventivo e corretivo ilimitado',
+                'Gestão de patchs e atualizações críticas',
+                'Relatórios mensais de saúde do ambiente'
+            ]
         },
-        {
-            tag: "[ Cloud Backup ]",
-            title: "Backup em Nuvem",
-            desc: "Garantimos a proteção e disponibilidade dos dados críticos com soluções de backup automatizadas em nuvem."
+        'backup': {
+            title: 'Backup Nuvem',
+            subtitle: 'Segurança e Continuidade de Dados',
+            features: [
+                'Backup automatizado e criptografado',
+                'Retenção personalizada conforme sua necessidade',
+                'Recuperação rápida em caso de ransomware',
+                'Armazenamento em datacenters globais'
+            ]
         },
-        {
-            tag: "[ Managed AV ]",
-            title: "Antivírus Gerenciado",
-            desc: "Protegemos os sistemas contra vírus, malwares e outras ameaças cibernéticas com nossa solução de antivírus gerenciado."
+        'antivirus': {
+            title: 'Antivírus',
+            subtitle: 'Proteção de Endpoint Enterprise',
+            features: [
+                'Proteção contra ameaças zero-day',
+                'Firewall de host e controle de dispositivos',
+                'Análise comportamental baseada em IA',
+                'Console de gerenciamento centralizado'
+            ]
         },
-        {
-            tag: "[ Recovery ]",
-            title: "Disaster Recovery",
-            desc: "Solução que permite a recuperação da infraestrutura de tecnologia e sistemas vitais de sua empresa, em consequência de desastres."
+        'recovery': {
+            title: 'Recovery',
+            subtitle: 'Disaster Recovery as a Service',
+            features: [
+                'Planejamento de continuidade de negócios',
+                'Testes de restauração periódicos',
+                'Replicação de servidores em tempo real',
+                'RTO e RPO definidos por aplicação'
+            ]
         }
-    ];
+    };
 
-    let serviceIndex = 0;
-    const tagEl = document.getElementById('service-tag');
-    const titleEl = document.getElementById('service-title');
-    const descEl = document.getElementById('service-desc');
+    const specialityItems = document.querySelectorAll('.speciality-item');
+    const displayTitle = document.getElementById('display-title');
+    const displaySubtitle = document.getElementById('display-subtitle');
+    const displayFeatures = document.getElementById('display-features');
+    const specialityGlow = document.querySelector('.speciality-glow');
+    const displayWrapper = document.getElementById('display-content-wrapper');
 
-    // Initialize GSAP TextPlugin
-    gsap.registerPlugin(TextPlugin);
+    function updateSpecialityDisplay(id) {
+        const data = specialitiesData[id];
+        if (!data) return;
 
-    function updateService() {
-        serviceIndex = (serviceIndex + 1) % serviceData.length;
-        const data = serviceData[serviceIndex];
-
-        // Fade out current content
-        const tl = gsap.timeline();
-
-        tl.to([tagEl, titleEl, descEl], {
+        // Transition content
+        gsap.to(displayWrapper, {
             opacity: 0,
-            y: -10,
-            duration: 0.4,
-            stagger: 0.1,
+            x: 20,
+            duration: 0.3,
             onComplete: () => {
-                // Set new content via TextPlugin
-                gsap.set([tagEl, titleEl, descEl], { y: 10 });
+                displayTitle.innerText = data.title;
+                displaySubtitle.innerText = data.subtitle;
 
-                gsap.to(tagEl, {
-                    duration: 0.5,
-                    text: data.tag,
-                    opacity: 1,
-                    y: 0
+                // Clear and rebuild features
+                displayFeatures.innerHTML = '';
+                data.features.forEach(feature => {
+                    const li = document.createElement('li');
+                    li.className = 'flex items-center gap-4 text-zinc-300';
+                    li.innerHTML = `
+                        <div class="w-1.5 h-1.5 rounded-full bg-[#ef233c]"></div>
+                        <span class="text-sm uppercase tracking-wider">${feature}</span>
+                    `;
+                    displayFeatures.appendChild(li);
                 });
 
-                gsap.to(titleEl, {
-                    duration: 0.8,
-                    text: data.title,
-                    opacity: 1,
-                    y: 0,
-                    delay: 0.2
-                });
+                gsap.fromTo(displayWrapper,
+                    { opacity: 0, x: -20 },
+                    { opacity: 1, x: 0, duration: 0.5, ease: "power2.out" }
+                );
 
-                gsap.to(descEl, {
-                    duration: 1.2,
-                    text: data.desc,
-                    opacity: 1,
-                    y: 0,
-                    delay: 0.4,
-                    ease: "none"
-                });
+                // Stagger features reveal
+                gsap.fromTo('#display-features li',
+                    { opacity: 0, x: -10 },
+                    { opacity: 1, x: 0, duration: 0.4, stagger: 0.1, delay: 0.2, ease: "power2.out" }
+                );
             }
         });
+
+        // Glow effect pulse
+        gsap.fromTo(specialityGlow,
+            { opacity: 0, scale: 0.8 },
+            { opacity: 1, scale: 1.1, duration: 0.8, yoyo: true, repeat: 1, ease: "power2.inOut" }
+        );
     }
 
-    setInterval(updateService, 6000);
+    specialityItems.forEach(item => {
+        item.addEventListener('click', () => {
+            if (item.classList.contains('active')) return;
+
+            // Remove active from others
+            specialityItems.forEach(i => i.classList.remove('active'));
+            item.classList.add('active');
+
+            const id = item.getAttribute('data-speciality');
+            updateSpecialityDisplay(id);
+        });
+
+        // Spotlight effect
+        item.addEventListener('mousemove', e => {
+            const rect = item.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            item.style.setProperty('--mouse-x', `${x}px`);
+            item.style.setProperty('--mouse-y', `${y}px`);
+        });
+    });
+
 
     // Responsive Line Split Animation
     gsap.registerPlugin(ScrollTrigger);
