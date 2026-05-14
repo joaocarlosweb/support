@@ -410,4 +410,26 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
+
+    // WhatsApp Widget Logic
+    const whatsappBubble = document.getElementById('whatsapp-bubble');
+    if (whatsappBubble) {
+        function showWhatsappBubble() {
+            // Show bubble
+            whatsappBubble.classList.remove('opacity-0', 'translate-y-4');
+            whatsappBubble.classList.add('opacity-100', 'translate-y-0');
+
+            // Hide after 8 seconds
+            setTimeout(() => {
+                whatsappBubble.classList.add('opacity-0', 'translate-y-4');
+                whatsappBubble.classList.remove('opacity-100', 'translate-y-0');
+            }, 8000);
+        }
+
+        // Initial show after 5 seconds
+        setTimeout(showWhatsappBubble, 5000);
+
+        // Repeat every 30 seconds
+        setInterval(showWhatsappBubble, 30000);
+    }
 });

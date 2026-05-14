@@ -448,7 +448,7 @@ body {
     align-items: center;
     justify-content: center;
     gap: 3rem;
-
+    padding-top: 40px;
     padding-bottom: 3rem;
 }
 
@@ -594,5 +594,32 @@ body {
 
     100% {
         transform: translateX(100%) rotate(45deg);
+    }
+}
+
+/* WhatsApp Widget */
+.whatsapp-btn {
+    box-shadow: 0 15px 45px -10px rgba(239, 35, 60, 0.4);
+}
+
+#whatsapp-bubble {
+    filter: drop-shadow(0 0 20px rgba(239, 35, 60, 0.1));
+    transform-origin: bottom right;
+}
+
+#whatsapp-bubble.opacity-100 {
+    animation: bubble-premium-entrance 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes bubble-premium-entrance {
+    0% { 
+        transform: scale(0.9) translateY(20px); 
+        opacity: 0;
+        filter: blur(10px);
+    }
+    100% { 
+        transform: scale(1) translateY(0); 
+        opacity: 1;
+        filter: blur(0px);
     }
 }
