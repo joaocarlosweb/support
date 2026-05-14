@@ -102,12 +102,39 @@
                 </a>
             </div>
             <div class="flex gap-4 shrink-0 gap-x-4 gap-y-4 items-center">
+                <!-- Desktop Live Button -->
                 <a href="https://api.whatsapp.com/send?phone=5584998087059" target="_blank"
-                    class="flex items-center gap-2 px-4 py-2 border border-white/10 hover:border-white/40 transition-all text-[10px] font-bold uppercase tracking-widest text-white">
+                    class="hidden md:flex items-center gap-2 px-4 py-2 border border-white/10 hover:border-white/40 transition-all text-[10px] font-bold uppercase tracking-widest text-white">
                     <span class="w-1.5 h-1.5 rounded-full bg-[#ef233c] animate-pulse"></span>
                     Live
                 </a>
+
+                <!-- Mobile Hamburger Button -->
+                <button id="mobile-menu-btn"
+                    class="flex md:hidden flex-col gap-1.5 justify-center items-end p-2 group transition-all">
+                    <span class="w-6 h-0.5 bg-white transition-all duration-300 origin-center line-1"></span>
+                    <span class="w-4 h-0.5 bg-[#ef233c] transition-all duration-300 group-hover:w-6 line-2"></span>
+                    <span class="w-6 h-0.5 bg-white transition-all duration-300 origin-center line-3"></span>
+                </button>
             </div>
+        </nav>
+    </div>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu"
+        class="fixed inset-0 bg-black/98 z-[55] flex flex-col items-center justify-center opacity-0 pointer-events-none transition-all duration-500 backdrop-blur-2xl">
+        <div class="absolute top-0 left-0 w-full h-full bg-[grid-white/[0.02]] bg-[size:60px_60px]"></div>
+        <nav
+            class="relative z-10 flex flex-col items-center gap-10 text-4xl font-manrope font-bold uppercase tracking-tighter">
+            <a href="#inicio"
+                class="mobile-link text-white/40 hover:text-white transition-all duration-300 scale-90 hover:scale-100">Início</a>
+            <a href="#quem-somos"
+                class="mobile-link text-white/40 hover:text-white transition-all duration-300 scale-90 hover:scale-100">Quem
+                Somos</a>
+            <a href="#servicos"
+                class="mobile-link text-white/40 hover:text-white transition-all duration-300 scale-90 hover:scale-100">Soluções</a>
+            <a href="#contato"
+                class="mobile-link text-white/40 hover:text-white transition-all duration-300 scale-90 hover:scale-100">Contato</a>
         </nav>
     </div>
 
@@ -211,7 +238,7 @@
             </section>
 
             <section
-                class="lg:flex-[2.2] lg:h-[480px] min-h-[400px] group overflow-hidden border-zinc-800 border rounded-none relative animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.4s_both] animate">
+                class="lg:flex-[2.2] h-[240px] md:h-[480px] group overflow-hidden border-zinc-800 border rounded-none relative animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.4s_both] animate">
                 <video autoplay muted loop playsinline
                     class="group-hover:opacity-80 group-hover:scale-105 transition-all duration-1000 opacity-100 mix-blend-normal w-full h-full object-cover absolute top-0 right-0 bottom-0 left-0"
                     muted="muted">
@@ -555,11 +582,17 @@
                         </div>
                     </div>
                     <!-- Inner Background -->
-                    <div class="absolute inset-[1.5px] bg-[#ef233c] z-10 group-hover:bg-black transition-colors duration-500"></div>
+                    <div
+                        class="absolute inset-[1.5px] bg-[#ef233c] z-10 group-hover:bg-black transition-colors duration-500">
+                    </div>
                     <!-- Button Content -->
-                    <span class="relative z-30 flex items-center justify-center gap-3 text-[11px] font-bold text-white tracking-[0.3em] uppercase transition-colors group-hover:text-white">
+                    <span
+                        class="relative z-30 flex items-center justify-center gap-3 text-[11px] font-bold text-white tracking-[0.3em] uppercase transition-colors group-hover:text-white">
                         Agendar Consultoria
-                        <svg fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewbox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg" class="transition-transform duration-500 group-hover:translate-x-1">
+                        <svg fill="none" height="16" stroke="currentColor" stroke-linecap="round"
+                            stroke-linejoin="round" stroke-width="2.5" viewbox="0 0 24 24" width="16"
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="transition-transform duration-500 group-hover:translate-x-1">
                             <path d="M5 12h14"></path>
                             <path d="m12 5 7 7-7 7"></path>
                         </svg>
@@ -578,10 +611,16 @@
                     <!-- Inner Background -->
                     <div class="absolute inset-[1.5px] bg-black z-10"></div>
                     <!-- Button Content -->
-                    <span class="relative z-30 flex items-center justify-center gap-3 text-[11px] font-bold text-white tracking-[0.3em] uppercase transition-colors">
+                    <span
+                        class="relative z-30 flex items-center justify-center gap-3 text-[11px] font-bold text-white tracking-[0.3em] uppercase transition-colors">
                         Falar via E-mail
-                        <svg fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg" class="opacity-50 group-hover:opacity-100 transition-all">
-                            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 1 1-7.6-11.7 8.38 8.38 0 0 1 3.8.9L21 3z"></path>
+                        <svg fill="none" height="16" stroke="currentColor" stroke-linecap="round"
+                            stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="16"
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="opacity-50 group-hover:opacity-100 transition-all">
+                            <path
+                                d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 1 1-7.6-11.7 8.38 8.38 0 0 1 3.8.9L21 3z">
+                            </path>
                         </svg>
                     </span>
                 </a>

@@ -258,3 +258,121 @@ body {
         background-position: 200% 0;
     }
 }
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .preloader-percentage {
+        font-size: 4rem;
+    }
+
+    .preloader-logo {
+        width: 140px;
+    }
+
+    .preloader-bar-container {
+        width: 200px;
+    }
+
+    .horizontal-scroll-container {
+        gap: 1rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .team-card {
+        min-width: 280px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .preloader-percentage {
+        font-size: 3rem;
+    }
+
+    .preloader-logo {
+        width: 100px;
+    }
+
+    .preloader-bar-container {
+        width: 150px;
+    }
+
+    /* Hero Text Adjustments */
+    .hero-title {
+        font-size: 2.75rem !important;
+        line-height: 1.1 !important;
+    }
+
+    .hero-subtitle {
+        font-size: 1.1rem !important;
+    }
+
+    /* Adjusting sections padding */
+    section {
+        padding-top: 4rem !important;
+        padding-bottom: 4rem !important;
+    }
+
+    #inicio {
+        padding-top: 6rem !important;
+    }
+}
+
+/* Critical fix for 320px screens */
+@media (max-width: 320px) {
+    .hero-title {
+        font-size: 2.25rem !important;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem !important;
+    }
+
+    .preloader-percentage {
+        font-size: 2.5rem;
+    }
+
+    .preloader-logo {
+        width: 80px;
+    }
+
+    .preloader-bar-container {
+        width: 120px;
+    }
+
+    .shiny-cta,
+    .group.relative.flex.min-w-\[280px\] {
+        min-width: 100% !important;
+        width: 100% !important;
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+    }
+    
+    .team-card {
+        min-width: 240px !important;
+    }
+
+    .horizontal-scroll-container {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+    }
+}
+
+/* Hamburger Animation States */
+#mobile-menu-btn.active .line-1 {
+    transform: translateY(6px) rotate(45deg);
+}
+
+#mobile-menu-btn.active .line-2 {
+    opacity: 0;
+    transform: translateX(10px);
+}
+
+#mobile-menu-btn.active .line-3 {
+    transform: translateY(-6px) rotate(-45deg);
+}
+
+#mobile-menu.active {
+    opacity: 1 !important;
+    pointer-events: auto !important;
+}
