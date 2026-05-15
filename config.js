@@ -185,6 +185,77 @@ document.addEventListener('DOMContentLoaded', () => {
             item.style.setProperty('--mouse-y', `${y}px`);
         });
     });
+    
+    // Hero Service Cycling Logic (Automatic)
+    const heroServices = [
+        {
+            tag: '[ TI GERENCIADO ]',
+            title: 'Suporte de TI Gerenciado',
+            desc: 'Somos responsáveis por gerenciar, monitorar e manter a infraestrutura e os sistemas de TI do cliente, garantindo eficiência e segurança total.'
+        },
+        {
+            tag: '[ SEGURANÇA ]',
+            title: 'Proteção & Antivírus',
+            desc: 'Implementação de firewalls avançados e proteção de endpoint com IA para neutralizar ameaças antes que elas atinjam seus dados críticos.'
+        },
+        {
+            tag: '[ CONTINUIDADE ]',
+            title: 'Backup & Recovery',
+            desc: 'Estratégias robustas de Disaster Recovery e backups automatizados em nuvem para garantir que sua empresa nunca pare, aconteça o que acontecer.'
+        }
+    ];
+
+    const serviceTag = document.getElementById('service-tag');
+    const serviceTitle = document.getElementById('service-title');
+    const serviceDesc = document.getElementById('service-desc');
+    let heroServiceIndex = 0;
+
+    function updateHeroService() {
+        if (!serviceTag || !serviceTitle || !serviceDesc) return;
+
+        heroServiceIndex = (heroServiceIndex + 1) % heroServices.length;
+        const data = heroServices[heroServiceIndex];
+
+        const tl = gsap.timeline();
+
+        // Fade out with slide
+        tl.to([serviceTag, serviceTitle, serviceDesc], {
+            opacity: 0,
+            y: -20,
+            filter: "blur(10px)",
+            duration: 0.6,
+            stagger: 0.1,
+            ease: "power2.in",
+            onComplete: () => {
+                // Update content
+                serviceTag.innerText = data.tag;
+                serviceTitle.innerText = data.title;
+                serviceDesc.innerText = data.desc;
+                
+                // Reset for entrance
+                gsap.set([serviceTag, serviceTitle, serviceDesc], { 
+                    opacity: 0,
+                    y: 20,
+                    filter: "blur(10px)"
+                });
+            }
+        });
+
+        // Fade in with slide up
+        tl.to([serviceTag, serviceTitle, serviceDesc], {
+            opacity: 1,
+            y: 0,
+            filter: "blur(0px)",
+            duration: 0.8,
+            stagger: 0.15,
+            ease: "power4.out"
+        });
+    }
+
+    // Start cycling every 6 seconds
+    if (serviceTag) {
+        setInterval(updateHeroService, 6000);
+    }
 
 
     // Responsive Line Split Animation
@@ -210,14 +281,14 @@ document.addEventListener('DOMContentLoaded', () => {
         gsap.from(element.querySelectorAll('.reveal-word'), {
             scrollTrigger: {
                 trigger: element,
-                start: "top 85%",
-                end: "bottom 70%",
-                scrub: 1,
+                start: "top 90%",
+                end: "bottom 60%",
+                scrub: 0.5,
             },
-            opacity: 0.2,
-            y: 20,
-            stagger: 0.05,
-            duration: 1,
+            opacity: 0,
+            y: 10,
+            stagger: 0.02,
+            duration: 0.8,
             ease: "power2.out"
         });
     });
@@ -435,7 +506,7 @@ document.addEventListener('DOMContentLoaded', () => {
             whatsappBubble.classList.remove('opacity-0', 'translate-y-4');
             whatsappBubble.classList.add('opacity-100', 'translate-y-0');
 
-            // Hide after 6 seconds
+            // Hide after 12 seconds
             setTimeout(() => {
                 whatsappBubble.classList.add('opacity-0', 'translate-y-4');
                 whatsappBubble.classList.remove('opacity-100', 'translate-y-0');
@@ -445,7 +516,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Initial show after 12 seconds
         setTimeout(showWhatsappBubble, 12000);
 
-        // Repeat every 30 seconds
-        setInterval(showWhatsappBubble, 30000);
+        // Repeat every 60 seconds
+        setInterval(showWhatsappBubble, 60000);
     }
 });
