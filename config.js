@@ -318,7 +318,7 @@ document.addEventListener('DOMContentLoaded', () => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
             const target = this.getAttribute('href');
-            
+
             if (target === '#') return;
 
             gsap.to(window, {
@@ -354,21 +354,21 @@ document.addEventListener('DOMContentLoaded', () => {
         const toggleMenu = () => {
             const isOpen = mobileMenuBtn.classList.toggle('active');
             mobileMenu.classList.toggle('active');
-            
+
             if (isOpen) {
                 document.body.style.overflow = 'hidden';
                 // Premium stagger entrance with blur
-                gsap.fromTo('.mobile-link', 
-                    { y: 50, opacity: 0, filter: 'blur(10px)', scale: 0.8 }, 
-                    { 
-                        y: 0, 
-                        opacity: 1, 
-                        filter: 'blur(0px)', 
+                gsap.fromTo('.mobile-link',
+                    { y: 50, opacity: 0, filter: 'blur(10px)', scale: 0.8 },
+                    {
+                        y: 0,
+                        opacity: 1,
+                        filter: 'blur(0px)',
                         scale: 1,
-                        duration: 0.8, 
-                        stagger: 0.1, 
-                        ease: "power4.out", 
-                        delay: 0.3 
+                        duration: 0.8,
+                        stagger: 0.1,
+                        ease: "power4.out",
+                        delay: 0.3
                     }
                 );
             } else {
@@ -388,10 +388,10 @@ document.addEventListener('DOMContentLoaded', () => {
         mobileLinks.forEach(link => {
             link.addEventListener('click', (e) => {
                 const target = link.getAttribute('href');
-                
+
                 if (target.startsWith('#')) {
                     e.preventDefault();
-                    
+
                     // Close menu smoothly
                     mobileMenuBtn.classList.remove('active');
                     mobileMenu.classList.remove('active');
@@ -413,21 +413,37 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // WhatsApp Widget Logic
     const whatsappBubble = document.getElementById('whatsapp-bubble');
-    if (whatsappBubble) {
+    const bubbleText = whatsappBubble ? whatsappBubble.querySelector('p') : null;
+
+    const whatsappMessages = [
+        "Olá! 👋 Precisando de ajuda com a TI da sua empresa? Estamos prontos para te atender.",
+        "Dica do dia: Manter backups em nuvem evita 99% dos prejuízos com Ransomware! 🛡️",
+        "Você sabia? Um suporte preventivo pode reduzir custos de manutenção em até 40%. Vamos conversar?",
+        "Internet lenta? Pode ser configuração na sua rede interna. Podemos analisar para você! ⚡",
+        "Precisando de uma auditoria no seu parque tecnológico? Solicite um orçamento agora! 📋"
+    ];
+
+    let messageIndex = 0;
+
+    if (whatsappBubble && bubbleText) {
         function showWhatsappBubble() {
+            // Update message
+            bubbleText.innerText = whatsappMessages[messageIndex];
+            messageIndex = (messageIndex + 1) % whatsappMessages.length;
+
             // Show bubble
             whatsappBubble.classList.remove('opacity-0', 'translate-y-4');
             whatsappBubble.classList.add('opacity-100', 'translate-y-0');
 
-            // Hide after 8 seconds
+            // Hide after 6 seconds
             setTimeout(() => {
                 whatsappBubble.classList.add('opacity-0', 'translate-y-4');
                 whatsappBubble.classList.remove('opacity-100', 'translate-y-0');
-            }, 8000);
+            }, 12000);
         }
 
-        // Initial show after 5 seconds
-        setTimeout(showWhatsappBubble, 5000);
+        // Initial show after 12 seconds
+        setTimeout(showWhatsappBubble, 12000);
 
         // Repeat every 30 seconds
         setInterval(showWhatsappBubble, 30000);
