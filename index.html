@@ -58,7 +58,8 @@
     <div class="fixed inset-0 -z-10 bg-black">
         <!-- Video Background Fixed -->
         <div class="absolute inset-0 z-0">
-            <video autoplay muted loop playsinline class="w-full h-full object-cover opacity-40" muted="muted">
+            <video autoplay muted loop playsinline preload="auto" poster="" class="w-full h-full object-cover opacity-40">
+                <source src="herosuport.webm" type="video/webm">
                 <source src="herosuport.mp4" type="video/mp4">
             </video>
             <div class="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black"></div>
@@ -268,9 +269,9 @@
 
             <section
                 class="lg:flex-[2.2] h-[240px] md:h-[480px] group overflow-hidden border-zinc-800 border rounded-none relative animate-on-scroll [animation:fadeSlideIn_1s_ease-out_0.4s_both]">
-                <video autoplay muted loop playsinline
-                    class="group-hover:opacity-80 group-hover:scale-105 transition-all duration-1000 opacity-100 mix-blend-normal w-full h-full object-cover absolute top-0 right-0 bottom-0 left-0"
-                    muted="muted">
+                <video autoplay muted loop playsinline preload="auto" poster=""
+                    class="group-hover:opacity-80 group-hover:scale-105 transition-all duration-1000 opacity-100 mix-blend-normal w-full h-full object-cover absolute top-0 right-0 bottom-0 left-0">
+                    <source src="video1.webm" type="video/webm">
                     <source src="video1.mp4" type="video/mp4">
                 </video>
             </section>
